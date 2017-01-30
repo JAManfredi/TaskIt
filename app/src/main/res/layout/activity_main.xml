@@ -8,12 +8,12 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="taskit.jm.com.taskit.MainActivity">
+    tools:context="taskit.jm.com.taskit.activities.MainActivity">
 
     <Button
-        android:id="@+id/btnAddItem"
-        android:text="Add Item"
-        android:onClick="onAddItem"
+        android:id="@+id/btnAddTask"
+        android:text="Add Task"
+        android:onClick="onAddTask"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -21,25 +21,25 @@
         android:layout_alignParentEnd="true" />
 
     <EditText
-        android:id="@+id/etNewItem"
+        android:id="@+id/etTaskDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:hint="Enter a new item"
+        android:hint="Enter a new task"
         android:ems="10"
-        android:layout_alignBaseline="@+id/btnAddItem"
-        android:layout_alignBottom="@+id/btnAddItem"
+        android:layout_alignBaseline="@+id/btnAddTask"
+        android:layout_alignBottom="@+id/btnAddTask"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_toLeftOf="@+id/btnAddItem"
-        android:layout_toStartOf="@+id/btnAddItem" />
+        android:layout_toLeftOf="@+id/btnAddTask"
+        android:layout_toStartOf="@+id/btnAddTask" />
 
     <ListView
-        android:id="@+id/lvItems"
+        android:id="@+id/lvTasks"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_above="@+id/btnAddItem" />
+        android:layout_above="@+id/btnAddTask" />
 </RelativeLayout>

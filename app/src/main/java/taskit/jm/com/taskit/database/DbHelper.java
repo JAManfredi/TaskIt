@@ -6,6 +6,7 @@ import java.sql.Date;
 import java.util.List;
 
 import taskit.jm.com.taskit.models.Task;
+import taskit.jm.com.taskit.models.TaskPriority;
 import taskit.jm.com.taskit.models.Task_Table;
 
 /**
@@ -14,7 +15,7 @@ import taskit.jm.com.taskit.models.Task_Table;
 
 public class DbHelper {
     public static List<Task> fetchTasks() {
-        return SQLite.select().from(Task.class).orderBy(Task_Table.taskPriority, false).queryList();
+        return SQLite.select().from(Task.class).orderBy(Task_Table.priorityValue, false).queryList();
     }
 
     public static Task fetchTaskWithId(int id) {
@@ -25,7 +26,7 @@ public class DbHelper {
         t.save();
     }
 
-    public static Task createTask(String description, Date dueDate, int priority) {
+    public static Task createTask(String description, Date dueDate, TaskPriority priority) {
         Task newTask = new Task();
         newTask.setDescription(description);
         newTask.setDueDate(dueDate);

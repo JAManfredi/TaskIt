@@ -3,9 +3,11 @@ package taskit.jm.com.taskit.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.EditText;
 import android.widget.ListView;
 
 import java.util.List;
@@ -18,7 +20,6 @@ import taskit.jm.com.taskit.models.Task;
 
 public class MainActivity extends AppCompatActivity {
     @BindView(R.id.lvTasks) ListView lvTasks;
-    @BindView(R.id.etTaskDescription) EditText etTaskDescription;
 
     List<Task> tasks;
     TasksAdapter taskAdapter;
@@ -32,10 +33,30 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
+        setTitle("Tasks");
+
         fetchTasks();
         taskAdapter = new TasksAdapter(this, tasks);
         lvTasks.setAdapter(taskAdapter);
         setupListViewListener();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_search:
+                addTaskAction();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override
@@ -67,20 +88,8 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void onAddTask(View v) {
-        saveNewTask();
-        etTaskDescription.setText("");
-    }
-
     private void fetchTasks() {
         tasks = DbHelper.fetchTasks();
-    }
-
-    private void saveNewTask() {
-        String taskDescription = etTaskDescription.getText().toString();
-        Task newTask = DbHelper.createTask(taskDescription, null, 0);
-        tasks.add(newTask);
-        taskAdapter.notifyDataSetChanged();
     }
 
     private void deleteTask(int atPosition) {
@@ -89,5 +98,10 @@ public class MainActivity extends AppCompatActivity {
             tasks.remove(atPosition);
             taskAdapter.notifyDataSetChanged();
         }
+    }
+
+    private void addTaskAction() {
+        Intent editIntent = new Intent(MainActivity.this, AddTaskActivity.class);
+        startActivity(editIntent);
     }
 }

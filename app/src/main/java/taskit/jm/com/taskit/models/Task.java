@@ -15,6 +15,9 @@ import taskit.jm.com.taskit.database.DbFlowDatabase;
  * Created by Jared12 on 1/29/17.
  */
 
+
+
+
 @Table(database = DbFlowDatabase.class)
 @Parcel(analyze={Task.class})
 public class Task extends BaseModel {
@@ -29,7 +32,12 @@ public class Task extends BaseModel {
     Date dueDate;
 
     @Column
-    int taskPriority;
+    int priorityValue;
+
+    @Column
+    Boolean complete;
+
+    TaskPriority taskPriority;
 
     public Task() {
     }
@@ -40,10 +48,6 @@ public class Task extends BaseModel {
 
     public void setDueDate(Date dueDate) {
         this.dueDate = dueDate;
-    }
-
-    public void setTaskPriority(int taskPriority) {
-        this.taskPriority = taskPriority;
     }
 
     public int getId() {
@@ -58,7 +62,19 @@ public class Task extends BaseModel {
         return dueDate;
     }
 
-    public int getTaskPriority() {
-        return taskPriority;
+    public void setTaskPriority(TaskPriority taskPriority) {
+        this.priorityValue = taskPriority.getTaskValue();
+    }
+
+    public TaskPriority getTaskPriority() {
+        return TaskPriority.valueOf(this.priorityValue);
+    }
+
+    public Boolean isComplete() {
+        return complete;
+    }
+
+    public void setComplete(Boolean complete) {
+        this.complete = complete;
     }
 }

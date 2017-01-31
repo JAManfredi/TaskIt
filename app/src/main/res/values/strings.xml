@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">TaskIt</string>
+    <string name="add_task">Add Task</string>
+    <string name="enter_title">Enter task title</string>
+    <string name="enter_description">Enter task description</string>
+    <string name="priority">Priority:</string>
+    <string name="priority_low">Low</string>
+    <string name="priority_medium">Medium</string>
+    <string name="priority_high">High</string>
+    <string name="due_date">Due Date:</string>
+    <string name="btn_add_task">Add Task</string>
 </resources>

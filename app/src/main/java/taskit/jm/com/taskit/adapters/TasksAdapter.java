@@ -1,4 +1,4 @@
-package taskit.jm.com.taskit.activities;
+package taskit.jm.com.taskit.adapters;
 
 import android.content.Context;
 import android.graphics.Paint;
@@ -34,6 +34,11 @@ public class TasksAdapter extends BaseAdapter {
         super();
         this.context = context;
         this.taskList = taskList;
+    }
+
+    public void setTasks(List<Task> tasks) {
+        this.taskList = tasks;
+        notifyDataSetChanged();
     }
 
     @Override
@@ -79,8 +84,8 @@ public class TasksAdapter extends BaseAdapter {
             });
         }
 
-        // Set Description
-        holder.tvDescription.setText(task.getDescription());
+        // Set Title
+        holder.tvTaskTitle.setText(task.getTitle());
 
         // Set Due Date
         if (task.getDueDate() == null) {
@@ -103,12 +108,12 @@ public class TasksAdapter extends BaseAdapter {
     void setCellComplete(ViewHolder holder, Boolean complete) {
         if (complete) {
             holder.priorityLayout.setBackgroundColor(holder.grayColor);
-            holder.tvDescription.setTextColor(holder.grayColor);
-            holder.tvDescription.setPaintFlags(holder.tvDescription.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+            holder.tvTaskTitle.setTextColor(holder.grayColor);
+            holder.tvTaskTitle.setPaintFlags(holder.tvTaskTitle.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
             holder.tvDueDate.setTextColor(holder.grayColor);
         } else {
-            holder.tvDescription.setTextColor(holder.blackColor);
-            holder.tvDescription.setPaintFlags(holder.tvDescription.getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
+            holder.tvTaskTitle.setTextColor(holder.blackColor);
+            holder.tvTaskTitle.setPaintFlags(holder.tvTaskTitle.getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
             holder.tvDueDate.setTextColor(holder.darkGrayColor);
         }
     }
@@ -129,7 +134,7 @@ public class TasksAdapter extends BaseAdapter {
     }
 
     static class ViewHolder {
-        @BindView(R.id.tvTaskDescription) TextView tvDescription;
+        @BindView(R.id.tvTaskTitle) TextView tvTaskTitle;
         @BindView(R.id.tvTaskDueDate) TextView tvDueDate;
         @BindView(R.id.cbTaskComplete) CheckBox cbComplete;
         @BindView(R.id.rlPriority) RelativeLayout priorityLayout;

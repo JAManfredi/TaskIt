@@ -26,6 +26,9 @@ public class Task extends BaseModel {
     int id;
 
     @Column
+    String title;
+
+    @Column
     String description;
 
     @Column
@@ -42,6 +45,10 @@ public class Task extends BaseModel {
     public Task() {
     }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     public void setDescription(String description) {
         this.description = description;
     }
@@ -50,8 +57,16 @@ public class Task extends BaseModel {
         this.dueDate = dueDate;
     }
 
+    public void setTaskPriority(TaskPriority taskPriority) {
+        this.priorityValue = taskPriority.getTaskValue();
+    }
+
     public int getId() {
         return id;
+    }
+
+    public String getTitle() {
+        return title;
     }
 
     public String getDescription() {
@@ -60,10 +75,6 @@ public class Task extends BaseModel {
 
     public Date getDueDate() {
         return dueDate;
-    }
-
-    public void setTaskPriority(TaskPriority taskPriority) {
-        this.priorityValue = taskPriority.getTaskValue();
     }
 
     public TaskPriority getTaskPriority() {

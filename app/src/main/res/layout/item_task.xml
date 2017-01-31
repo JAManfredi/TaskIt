@@ -7,11 +7,11 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:textSize="20sp"
+        android:textSize="17sp"
         android:ellipsize="end"
         android:singleLine="true"
         android:ems="10"
-        android:id="@+id/tvTaskDescription"
+        android:id="@+id/tvTaskTitle"
         android:layout_alignParentTop="true"
         android:layout_toEndOf="@+id/rlPriority"
         android:layout_toRightOf="@+id/rlPriority"
@@ -27,22 +27,22 @@
         android:layout_alignParentBottom="true"
         android:layout_toStartOf="@+id/tvTaskDueDate"
         android:layout_toLeftOf="@+id/tvTaskDueDate"
-        android:src="@drawable/ic_access_alarm"
+        android:src="@drawable/ic_due_date"
         android:contentDescription="Due Date" />
     <TextView
         android:layout_width="115dp"
         android:layout_height="20dp"
         android:textSize="12sp"
         android:textAlignment="viewStart"
+        android:gravity="center_vertical"
         android:textColor="@color/colorDarkGray"
         android:ems="10"
         android:id="@+id/tvTaskDueDate"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:gravity="center_vertical"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp" />
+        android:layout_marginEnd="5dp"
+        android:layout_marginRight="5dp" />
     <RelativeLayout
         android:id="@+id/rlPriority"
         android:layout_width="50dp"

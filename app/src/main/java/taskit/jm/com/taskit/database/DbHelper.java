@@ -15,22 +15,23 @@ import taskit.jm.com.taskit.models.Task_Table;
 
 public class DbHelper {
     public static List<Task> fetchTasks() {
-        return SQLite.select().from(Task.class).orderBy(Task_Table.priorityValue, false).queryList();
+        return SQLite.select().from(Task.class)
+                .orderBy(Task_Table.complete, true)
+                .orderBy(Task_Table.priorityValue, false)
+                .orderBy(Task_Table.dueDate, true).queryList();
     }
 
     public static Task fetchTaskWithId(int id) {
         return SQLite.select().from(Task.class).where(Task_Table.id.is(id)).querySingle();
     }
 
-    public static void saveTask(Task t) {
-        t.save();
-    }
-
-    public static Task createTask(String description, Date dueDate, TaskPriority priority) {
+    public static Task createTask(String title, String description, Date dueDate, TaskPriority priority) {
         Task newTask = new Task();
+        newTask.setTitle(title);
         newTask.setDescription(description);
         newTask.setDueDate(dueDate);
         newTask.setTaskPriority(priority);
+        newTask.setComplete(false);
         newTask.save();
 
         return newTask;

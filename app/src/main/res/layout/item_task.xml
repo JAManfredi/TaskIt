@@ -28,7 +28,7 @@
         android:layout_toStartOf="@+id/tvTaskDueDate"
         android:layout_toLeftOf="@+id/tvTaskDueDate"
         android:src="@drawable/ic_due_date"
-        android:contentDescription="@string/due_date" />
+        android:contentDescription="@string/due_date_string" />
     <TextView
         android:layout_width="115dp"
         android:layout_height="20dp"

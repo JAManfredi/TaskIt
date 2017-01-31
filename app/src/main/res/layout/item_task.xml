@@ -9,7 +9,7 @@
         android:layout_height="30dp"
         android:textSize="17sp"
         android:ellipsize="end"
-        android:singleLine="true"
+        android:maxLines="1"
         android:ems="10"
         android:id="@+id/tvTaskTitle"
         android:layout_alignParentTop="true"
@@ -28,7 +28,7 @@
         android:layout_toStartOf="@+id/tvTaskDueDate"
         android:layout_toLeftOf="@+id/tvTaskDueDate"
         android:src="@drawable/ic_due_date"
-        android:contentDescription="Due Date" />
+        android:contentDescription="@string/due_date" />
     <TextView
         android:layout_width="115dp"
         android:layout_height="20dp"

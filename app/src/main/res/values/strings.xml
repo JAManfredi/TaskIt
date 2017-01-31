@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TaskIt</string>
+    <string name="app_name">Task It</string>
     <string name="add_task">Add Task</string>
     <string name="enter_title">Enter task title</string>
     <string name="enter_description">Enter task description</string>
@@ -7,6 +7,35 @@
     <string name="priority_low">Low</string>
     <string name="priority_medium">Medium</string>
     <string name="priority_high">High</string>
-    <string name="due_date">Due Date:</string>
     <string name="btn_add_task">Add Task</string>
+    <string name="tasks_title">Tasks</string>
+    <string name="task_string">Task</string>
+
+    <string name="description_string">Description</string>
+    <string name="task_priority_string">Task Priority</string>
+    <string name="task_status_string">Task Status</string>
+
+    <string name="delete_task_title">Delete Task?</string>
+    <string name="delete_task_message">Are you sure you wish to delete this task?</string>
+    <string name="delete_string">Delete</string>
+    <string name="cancel_string">Cancel</string>
+
+    <string name="incomplete_string">INCOMPLETE</string>
+    <string name="complete_string">COMPLETE</string>
+    <string name="task_details_title">Task Details</string>
+
+    <string name="due_date_string">Due Date</string>
+    <string name="due_date_colon_string">Due Date:</string>
+    <string name="no_due_date_string">No Due Date</string>
+    <string name="ok_string">OK</string>
+
+    <string name="update_task_string">Update Task</string>
+    <string name="edit_task_string">Edit Task</string>
+    <string name="save_task_string">Save Task</string>
+    <string name="new_task_string">New Task</string>
+
+    <string name="oops_string">Oops</string>
+    <string name="need_description_string">You must enter a task description to create a task</string>
+    <string name="need_task_title_string">You must enter a task title to create a task</string>
+    <string name="need_description_task_title_string">You must enter a task title and a task description to create a task</string>
 </resources>

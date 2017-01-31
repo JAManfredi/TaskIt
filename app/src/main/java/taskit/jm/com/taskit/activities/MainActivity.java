@@ -22,6 +22,7 @@ import org.parceler.Parcels;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnItemClick;
@@ -35,6 +36,12 @@ import taskit.jm.com.taskit.models.Task;
 public class MainActivity extends AppCompatActivity {
     @BindView(R.id.lvTasks) ListView lvTasks;
 
+    @BindString(R.string.tasks_title) String stringTaskTitle;
+    @BindString(R.string.delete_string) String stringDelete;
+    @BindString(R.string.cancel_string) String stringCancel;
+    @BindString(R.string.delete_task_title) String stringDeleteTitle;
+    @BindString(R.string.delete_task_message) String stringDeleteMessage;
+
     FlowContentObserver observer;
     List<Task> tasks = new ArrayList<>();
     TasksAdapter taskAdapter;
@@ -47,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        setTitle("Tasks");
+        setTitle(stringTaskTitle);
 
         taskAdapter = new TasksAdapter(this, tasks);
         lvTasks.setAdapter(taskAdapter);
@@ -126,15 +133,15 @@ public class MainActivity extends AppCompatActivity {
 
     private void showConfirmDeleteDialog(final int position) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Delete Task?");
-        builder.setMessage("Are you sure you wish to delete this task?");
+        builder.setTitle(stringDeleteTitle);
+        builder.setMessage(stringDeleteMessage);
         builder.setCancelable(false);
-        builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(stringDelete, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 tasks.get(position).delete();
             }
         });
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(stringCancel, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();

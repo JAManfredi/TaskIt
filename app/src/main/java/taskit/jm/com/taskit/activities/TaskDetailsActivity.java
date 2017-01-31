@@ -40,9 +40,12 @@ public class TaskDetailsActivity extends AppCompatActivity {
     @BindColor(R.color.colorOrange) int orangeColor;
     @BindColor(R.color.colorRed) int redColor;
 
-    @BindString(R.string.priority_low) String lowPriority;
-    @BindString(R.string.priority_medium) String medPriority;
-    @BindString(R.string.priority_high) String highPriority;
+    @BindString(R.string.priority_low) String stringLowPriority;
+    @BindString(R.string.priority_medium) String stringMedPriority;
+    @BindString(R.string.priority_high) String stringHighPriority;
+    @BindString(R.string.task_details_title) String stringTaskDetailsTitle;
+    @BindString(R.string.complete_string) String stringComplete;
+    @BindString(R.string.incomplete_string) String stringIncomplete;
 
     Task currentTask;
     FlowContentObserver observer;
@@ -54,7 +57,7 @@ public class TaskDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_task_details);
         ButterKnife.bind(this);
 
-        setTitle("Task Details");
+        setTitle(stringTaskDetailsTitle);
 
         simpleDateFormat = new SimpleDateFormat("EEE, MMM dd, yyyy", Locale.getDefault());
         currentTask = Parcels.unwrap(getIntent().getParcelableExtra(TASK_OBJ));
@@ -123,21 +126,21 @@ public class TaskDetailsActivity extends AppCompatActivity {
 
         switch (task.getTaskPriority()) {
             case LOW:
-                tvPriority.setText(lowPriority);
+                tvPriority.setText(stringLowPriority);
                 tvPriority.setTextColor(greenColor);
                 break;
             case MEDIUM:
-                tvPriority.setText(medPriority);
+                tvPriority.setText(stringMedPriority);
                 tvPriority.setTextColor(orangeColor);
                 break;
             case HIGH:
-                tvPriority.setText(highPriority);
+                tvPriority.setText(stringHighPriority);
                 tvPriority.setTextColor(redColor);
                 break;
         }
 
         tvDueDate.setText(simpleDateFormat.format(task.getDueDate()));
-        tvStatus.setText((task.isComplete() != null) ? ((task.isComplete()) ? "COMPLETE" : "INCOMPLETE") : "INCOMPLETE");
+        tvStatus.setText((task.isComplete() != null) ? ((task.isComplete()) ? stringComplete : stringIncomplete) : stringIncomplete);
     }
 
     private void editTask() {

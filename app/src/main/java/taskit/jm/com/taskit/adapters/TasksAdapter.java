@@ -89,7 +89,7 @@ public class TasksAdapter extends BaseAdapter {
 
         // Set Due Date
         if (task.getDueDate() == null) {
-            holder.tvDueDate.setText("No Due Date");
+            holder.tvDueDate.setText(context.getResources().getString(R.string.no_due_date_string));
         } else {
             holder.tvDueDate.setText(holder.simpleDateFormat.format(task.getDueDate()));
         }
@@ -142,7 +142,6 @@ public class TasksAdapter extends BaseAdapter {
         @BindColor(R.color.colorGreen) int greenColor; // Low
         @BindColor(R.color.colorOrange) int orangeColor; // Medium
         @BindColor(R.color.colorRed) int redColor; // High
-
         @BindColor(R.color.colorGray) int grayColor;
         @BindColor(R.color.colorDarkGray) int darkGrayColor;
         @BindColor(R.color.colorBlack) int blackColor;

@@ -19,6 +19,7 @@ import android.widget.TextView;
 import java.sql.Date;
 import java.util.Calendar;
 
+import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -40,6 +41,21 @@ public class AddEditTaskDialogFragment extends AppCompatDialogFragment {
     @BindView(R.id.btnSave) Button btnSave;
     @BindView(R.id.tvTitle) TextView tvTitle;
     @BindView(R.id.btnDelete) ImageButton btnDelete;
+
+    @BindString(R.string.delete_string) String stringDelete;
+    @BindString(R.string.cancel_string) String stringCancel;
+    @BindString(R.string.delete_task_title) String stringDeleteTitle;
+    @BindString(R.string.delete_task_message) String stringDeleteMessage;
+    @BindString(R.string.ok_string) String stringOk;
+    @BindString(R.string.update_task_string) String stringUpdateTask;
+    @BindString(R.string.edit_task_string) String stringEditTask;
+    @BindString(R.string.save_task_string) String stringSaveTask;
+    @BindString(R.string.new_task_string) String stringNewTask;
+
+    @BindString(R.string.oops_string) String stringOops;
+    @BindString(R.string.need_description_string) String stringNeedDesc;
+    @BindString(R.string.need_task_title_string) String stringNeedTask;
+    @BindString(R.string.need_description_task_title_string) String stringNeedDescTask;
 
     Task currentTask;
 
@@ -77,14 +93,14 @@ public class AddEditTaskDialogFragment extends AppCompatDialogFragment {
         super.onViewCreated(view, savedInstanceState);
         if (currentTask != null) {
             // Editing Task
-            btnSave.setText("Update Task");
-            tvTitle.setText("Edit Task");
+            btnSave.setText(stringUpdateTask);
+            tvTitle.setText(stringEditTask);
             btnDelete.setVisibility(View.VISIBLE);
             loadTask();
         } else {
             // New Task
-            btnSave.setText("Save Task");
-            tvTitle.setText("New Task");
+            btnSave.setText(stringSaveTask);
+            tvTitle.setText(stringNewTask);
             btnDelete.setVisibility(View.GONE);
         }
     }
@@ -172,11 +188,11 @@ public class AddEditTaskDialogFragment extends AppCompatDialogFragment {
         if (title.length() > 0 && description.length() > 0) {
             return true;
         } else if (title.length() > 0 && description.length() == 0) {
-            showAlertDialogWith("Oops", "You must enter a task description to create a task.");
+            showAlertDialogWith(stringOops, stringNeedDesc);
         } else if (title.length() == 0 && description.length() > 0) {
-            showAlertDialogWith("Oops", "You must enter a task title to create a task.");
+            showAlertDialogWith(stringOops, stringNeedTask);
         } else {
-            showAlertDialogWith("Oops", "You must enter a task title and a task description to create a task.");
+            showAlertDialogWith(stringOops, stringNeedDescTask);
         }
         return false;
     }
@@ -186,7 +202,7 @@ public class AddEditTaskDialogFragment extends AppCompatDialogFragment {
         builder.setTitle(title);
         builder.setMessage(message);
         builder.setCancelable(false);
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(stringOk, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 dialog.cancel();
             }
@@ -197,17 +213,17 @@ public class AddEditTaskDialogFragment extends AppCompatDialogFragment {
 
     private void showConfirmDeleteDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this.getActivity());
-        builder.setTitle("Delete Task?");
-        builder.setMessage("Are you sure you wish to delete this task?");
+        builder.setTitle(stringDeleteTitle);
+        builder.setMessage(stringDeleteMessage);
         builder.setCancelable(false);
-        builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(stringDelete, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 currentTask.delete();
                 dialog.cancel();
                 dismiss();
             }
         });
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(stringCancel, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
